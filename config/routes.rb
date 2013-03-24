@@ -1,3 +1,3 @@
 Homecanvasr::Application.routes.draw do
-  root :to => 'home#main'
+  root to:  "home#main"
 end
