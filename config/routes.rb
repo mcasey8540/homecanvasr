@@ -1,3 +1,8 @@
 Homecanvasr::Application.routes.draw do
-  root to:  "home#main"
+  devise_for :users
+
+  root to:  "home#index"
+
+  resources :agents
+
 end
