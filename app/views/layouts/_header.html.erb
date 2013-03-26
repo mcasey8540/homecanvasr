@@ -9,13 +9,13 @@
 	    			<%= current_user.email %>
 	    			<span class="caret"></span>
 	  				</a>
-	  				<ul class="dropdown-menu">
-	  					<li><%= link_to 'Posts', root_path %></li>
-	  					<li><%= link_to 'Clients', root_path %></li>
-	  					<li><%= link_to 'Favorites', root_path %></li>
-	    				<li><%= link_to 'Account Settings', edit_user_registration_path %></li>
-	    				<li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-	  				</ul>
+	  				<% if current_user.role == 1 %>
+	  					<%= render "layouts/agent_links" %>
+	  				<% elsif current_user.role == 2 %>
+	  					<%= render "layouts/buyer_links" %>
+	  				<% elsif current_user.role == 3 %>
+	  					<%= render "layouts/homeowner_links" %>
+	  				<% end %>
 					</div>    	
 	    	<% else %>
 	    	<a class="btn btn-inverse" href="/users/sign_in">Login</a>
