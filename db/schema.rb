@@ -11,9 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130326145449) do
+ActiveRecord::Schema.define(:version => 20130404234526) do
 
-  create_table "roles", :force => true do |t|
+  create_table "cities", :force => true do |t|
+    t.integer  "county_id"
+    t.integer  "city_code"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "clients", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "last_name"
+    t.string   "living_status"
+    t.string   "move_timeframe"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "counties", :force => true do |t|
+    t.integer  "state_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "client_id"
+    t.integer  "state_id"
+    t.integer  "county_id"
+    t.integer  "city_code"
+    t.integer  "max_price"
+    t.integer  "min_price"
+    t.integer  "max_taxes"
+    t.integer  "min_sq_ft"
+    t.integer  "min_bed"
+    t.integer  "min_bath"
+    t.boolean  "attached_garage"
+    t.boolean  "pool"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "states", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -32,7 +74,6 @@ ActiveRecord::Schema.define(:version => 20130326145449) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.integer  "role"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

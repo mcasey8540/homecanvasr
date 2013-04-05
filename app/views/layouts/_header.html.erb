@@ -9,13 +9,7 @@
 	    			<%= current_user.email %>
 	    			<span class="caret"></span>
 	  				</a>
-	  				<% if current_user.role == 1 %>
 	  					<%= render "layouts/agent_links" %>
-	  				<% elsif current_user.role == 2 %>
-	  					<%= render "layouts/buyer_links" %>
-	  				<% elsif current_user.role == 3 %>
-	  					<%= render "layouts/homeowner_links" %>
-	  				<% end %>
 					</div>    	
 	    	<% else %>
 	    	<a class="btn btn-inverse" href="/users/sign_in">Login</a>
