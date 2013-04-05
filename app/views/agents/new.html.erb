@@ -1,0 +1,36 @@
+<h2>Sign Up</h2>
+
+<%= form_for(@agent) do |a| %>
+
+  <%= a.fields_for :user do |u| %>
+
+  <div class="field">
+    <%= u.label :email %><br />
+    <%= u.text_field :email %>
+  </div>
+  <div class="field">
+    <%= u.label :password %><br />
+    <%= u.password_field :password %>
+  </div>
+  <div class="field">
+    <%= u.label :password_confirmation %><br />
+    <%= u.password_field :password_confirmation %>
+  </div>
+  <% end %>
+  <div class="field">
+    <%= a.label :first_name %><br />
+    <%= a.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= a.label :last_name %><br />
+    <%= a.text_field :last_name %>
+  </div>
+
+ </br>
+  
+  <div class="actions">
+    <%= a.submit %>
+  </div>
+<% end %>
+
+
