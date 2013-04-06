@@ -70,4 +70,7 @@ $(function() {
       console.log(max_taxes);
     } );
 
+    // $("#new_cient").click(function() {
+    //       $("#new_client").hide().after('<%= j render("client") %>');
+    // });
 });

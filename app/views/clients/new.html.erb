@@ -1,0 +1,14 @@
+<%= form_for @client do |f| %>
+
+	<label>Client Last Name</label><br />
+	<%= f.text_field :last_name %><br />
+
+	<label>Client Living Status</label><br />
+	<%= f.select :living_status, ['Rents', 'Owns'] %><br />
+
+	<label>Moving Timeframe</label><br />
+	<%= f.select :move_timeframe, ['3 months', '6 months', '1 year', 'Not sure'] %><br />
+  </br> 
+  <%= f.submit "Add Client", class: "btn-info"%>
+
+<% end %>

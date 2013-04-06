@@ -6,6 +6,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-sass'
+gem 'dynamic_form'
 
 
 group :assets do

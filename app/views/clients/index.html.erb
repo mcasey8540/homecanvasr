@@ -1,0 +1,33 @@
+<h2>My Clients</h2>
+
+</br>
+
+<table class="table table-striped">
+
+	<tr>
+		<th>Client</th>
+		<th>Date Added</th>
+		<th>Current Status</th>
+		<th>Move Timeframe</th>
+		<th>Pre-approval Status</th>		
+		<th>Pre-approval Amount</th>
+		<th>Manage</th>
+	</tr>
+
+	<% @clients.each do |c| %>
+
+	<tr id=<%="client_#{c.id}"%> >
+		<td><%= c.last_name %></td>
+		<td><%= c.created_at.to_date %></td>
+		<td><%= c.living_status %></td>
+		<td><%= c.move_timeframe %></td>
+		<td>Pre approval status</td>
+		<td>Pre approval amount</td>		
+		<td><%= link_to "Delete", c, method: :delete, :confirm => "Sure you want to remove this client?", remote: :true %> | <%= link_to "Edit", edit_client_path(c) %> </td>
+	</tr>
+
+	<% end %>
+	
+</table>
+
+<a class="btn btn btn-info" id="new_client" href="/clients/new" >Add New Client</a>
