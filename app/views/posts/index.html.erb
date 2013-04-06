@@ -1,0 +1,37 @@
+<h2>My Posts</h2>
+
+<table class="table table-striped">
+
+	<tr>
+		<th>My Client</th>
+		<th>Date</th>
+		<th>Town</th>
+		<th>State</th>
+		<th>Max Taxes</th>		
+		<th>Max Price</th>
+		<th>Min Bed</th>
+		<th>Min Bath</th>
+		<th>Manage</th>
+		<th>Fetch Results</th>
+	</tr>
+
+	<% @posts.each do |p| %>
+
+	<tr id=<%="post_#{p.id}"%> >
+		<td><%= p.client_name %></td>
+		<td><%= p.created_at.to_date %></td>
+		<td><%= p.city_name %></td>
+		<td><%= p.state_name %></td>
+		<td><%= p.max_taxes %></td>		
+		<td><%= p.max_price%></td>
+		<td><%= p.min_bed %></td>
+		<td><%= p.min_bath %></td>
+		<td><%= link_to "Delete", p, method: :delete, :confirm => "Sure you want to delete this post?", remote: :true %> | <%= link_to "Edit", edit_post_path(p) %> </td>
+		<td>Fetch Results</td>
+	</tr>
+
+	<% end %>
+	
+</table>
+
+<a class="btn btn-info" href="/posts/new" >New Post</a>

@@ -1,4 +1,16 @@
 <%= form_for @post do |f| %>
+
+<% @post.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
+
+<div class="field">
+  <%= f.label "Client" %>
+  <%= f.collection_select( :client_id, Client.order(:last_name), :id, :last_name, {:include_blank => false}) %>
+</div>
+<%= link_to "Add New Client", new_client_path, :id => "new_client" %>
+</br>
+</br>
   <div class="field">
     <%= f.label :state %>
     <%= f.collection_select( :state_id, State.order(:name), :id, :name, {:include_blank => true}) %>
@@ -23,6 +35,13 @@
 <%= f.hidden_field :max_price, { :value => 0 } %>
 <%= f.hidden_field :min_price, { :value => 0 } %>
 </br>
+
+<%= f.label :min_bed %>
+<%= f.select :min_bed, [0,1,2,3,4,5] %>
+
+<%= f.label :min_bath %>
+<%= f.select :min_bath, [0,1,2,3,4,5] %>
+
 <p>
   <label for="amount_square_feet">Minimum Size:</label>
   <input type="text" id="amount_square_feet" style="border: 0; color: #f6931f; font-weight: bold;" />
@@ -37,12 +56,19 @@
 <div id="slider-range-max-tax" style="width:200px"></div>
 
 <%= f.hidden_field :max_taxes, { :value => 0 } %>
-
+</br>
+<h4>Additional Options</h4>
 <div class="field">
-  <%= f.label :client_id %>
-  <%= f.collection_select( :client_id, Client.order(:last_name), :id, :last_name, {:include_blank => true}) %>
+  <%= f.label :pool %>
+  <%= f.check_box :pool %>
+</div>
+<div class="field">
+  <%= f.label :attached_garage %>
+  <%= f.check_box :attached_garage %>
 </div>
 
+  </br>
+  </br>
   </br> 
-    <%= f.submit "Search", class: "btn-info"%>
+    <%= f.submit "Submit", class: "btn-info"%>
 <% end %>
