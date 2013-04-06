@@ -2,15 +2,15 @@ class ClientsController < ApplicationController
 	
 	def new 
 		@client = Client.new
+    @client.build_preapproval
 	end
 
   def create
-    @user = current_user
-    @client = @user.clients.new(params[:client])
+    @client = current_user.clients.new(params[:client])
     if @client.save
-    	redirect_to clients_path
+    	redirect_to clients_path, :notice => "New client added successfully"
     else
-      redirect_to new_client_path
+      redirect_to new_client_path, :notice => "Please fill out all fields"
     end
   end
 

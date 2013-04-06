@@ -6,11 +6,11 @@ class PostsController < ApplicationController
 	end
 
   def create
-    @post = current_user.posts.create(params[:post])
-    if @post.valid?
-      redirect_to(posts_path)
+    @post = current_user.posts.new(params[:post])
+    if @post.save
+      redirect_to posts_path, :notice => 'Post added successfully!'
     else
-      redirect_to new_post_path
+      redirect_to new_post_path, :notice => 'Please complete all fields'
     end
   end
 
