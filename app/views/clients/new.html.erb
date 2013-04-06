@@ -1,3 +1,5 @@
+<h2>Add New Client</h2>
+
 <%= form_for @client do |f| %>
 
 	<label>Client Last Name</label><br />
@@ -9,6 +11,13 @@
 	<label>Moving Timeframe</label><br />
 	<%= f.select :move_timeframe, ['3 months', '6 months', '1 year', 'Not sure'] %><br />
   </br> 
-  <%= f.submit "Add Client", class: "btn-info"%>
 
+  <%= f.fields_for :preapproval do |builder| %>
+  	<fieldset>
+  		<%= builder.label :file_name, "Preapproval File Name" %></br>
+  		<%= builder.text_field :file_name %></br>
+  	</fieldset>
+  <% end %>
+  </br>
+  <%= f.submit "Add Client", class: "btn-info"%>
 <% end %>
